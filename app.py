@@ -50,8 +50,11 @@ users_data=pd.DataFrame({
     "Occupation":occupation,
     "Salary":salary,
     "Hobby":hobby
-})
-
+}
+)
+#set index
+users_data.index=range(1,len(users_data)+1)
 #save to csv
 users_data.to_csv("users_data.csv",index=True)
 print("File saved as csv successfully")
+print("Length of data: ",len(users_data))
