@@ -51,6 +51,7 @@ users_data=pd.DataFrame({
     "Salary":salary,
     "Hobby":hobby
 })
-#show data
-print(users_data)
+
 #save to csv
+users_data.to_csv("users_data.csv",index=True)
+print("File saved as csv successfully")
