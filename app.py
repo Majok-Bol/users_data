@@ -57,4 +57,20 @@ users_data.index=range(1,len(users_data)+1)
 #save to csv
 users_data.to_csv("users_data.csv",index=True)
 print("File saved as csv successfully")
-print("Length of data: ",len(users_data))
+
+#calculate q1
+Q1=users_data['Age'].quantile(0.25)
+print("25th Percentile: ",Q1)
+Q3=users_data['Age'].quantile(0.75)
+print("75th Percentile: ",Q3)
+IQR=Q3-Q1
+print("Interquartile range: ",IQR)
+#calculate lower boundary
+lower_bound=Q1-(1.5*IQR)
+print("Lower bound: ",lower_bound)
+#upper bound
+upper_bound=Q3+(1.5*IQR)
+print("Upper bound: ",upper_bound)
+#find out if there is any outlier
+outlier=users_data[(users_data['Age']<lower_bound)|(users_data['Age']>upper_bound)]
+print(f"\nOutlier: ,{outlier['Age'].tolist()}")
